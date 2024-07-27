@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx cucumber-js",
+    "test": "npx cucumber-js -f json:report/cucumber_report.json",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix",
-    "format": "npx prettier --write ."
+    "format": "npx prettier --write .",
+    "report": "node ./features/support/report.support.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "^10.8.0",
     "@playwright/test": "^1.45.1",
+    "cucumber-html-reporter": "^6.0.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-cucumber": "^2.0.0",
