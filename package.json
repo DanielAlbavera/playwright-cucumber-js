@@ -7,7 +7,7 @@
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix",
     "format": "npx prettier --write .",
-    "report": "node ./features/support/report.support.js"
+    "report": "node ./report.js"
   },
   "keywords": [],
   "author": "",

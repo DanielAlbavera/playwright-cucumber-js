@@ -1,7 +1,8 @@
 const { setWorldConstructor } = require('@cucumber/cucumber');
 const { chromium } = require('playwright');
 
-function CustomWorld() {
+function CustomWorld({ attach }) {
+  this.attach = attach;
   this.browser = null;
   this.context = null;
   this.page = null;
@@ -26,6 +27,15 @@ CustomWorld.prototype.closeBrowser = async function () {
   await this.page.close();
   await this.context.close();
   await this.browser.close();
+};
+
+CustomWorld.prototype.takeScreenshot = async function (scenario) {
+  const path = './report/screenshots/';
+  const extension = '.png';
+  const screenshot = await this.page.screenshot({
+    path: path + scenario.pickle.name + extension,
+  });
+  await this.attach(screenshot, 'image/png');
 };
 
 setWorldConstructor(CustomWorld);
